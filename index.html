@@ -54,7 +54,7 @@
 
 <body>
     <ul id="messages"></ul>
-    
+
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
@@ -62,10 +62,10 @@
             setTimeout(function() {
                 var socket = io();
                 socket.on('message', function (msg) {
-                    
+
                     addMessage(msg);
                     console.log('Handle WS ' + msg);
-                    doStuff();                   
+                    doStuff();
                 });
 
                 $.get('/test', {}, function () {
@@ -74,13 +74,13 @@
                 })
             }, 1000);
         });
-           
+
         function addMessage(msg) {
             $('#messages').prepend($('<li>').text(msg));
         }
 
         function doStuff() {
-            for(var i = 0; i < 1000000000; i++) {
+            for(var i = 0; i < 800000000; i++) {
             }
         }
     </script>

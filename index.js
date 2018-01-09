@@ -7,21 +7,23 @@ app.get('/', function (req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
-app.get('/test', function (request, response) {    
+app.get('/test', function (request, response) {
     setTimeout(function() {
+        console.log('Send response');      
         clearTimeout(timeout);
         response.end('ack');
     }, 500);
-    
+
 });
 
 var INTERVAL = 70;
 var timeout;
 
 function emitMessage(index) {
-    timeout = setTimeout(function() {        
-        io.emit('message', index);      
-        emitMessage(++index);  
+    timeout = setTimeout(function() {
+        console.log('Emit message: ' + index)
+        io.emit('message', index);
+        emitMessage(++index);
     }, INTERVAL);
 }
 
